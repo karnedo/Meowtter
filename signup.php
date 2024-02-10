@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
     require 'database.php';
 
     $message = '';
@@ -53,7 +51,7 @@ ini_set('display_errors', 1);
         <?php require 'includes/header.php' ?>
 
         <?php if(!empty($message)): ?>
-            <p> <?= $message ?></p>
+            <p><?= $message ?></p>
         <?php endif; ?>
 
         <h1>Registro</h1>

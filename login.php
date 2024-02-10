@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
     session_start();
 
     //If there's a logged user, redirect to the main page
@@ -18,7 +19,7 @@
         $message = '';
 
         //Set the session and redirect to the main page
-        if(count($result) > 0 && password_verify($_POST['password'], $result['password'])){
+        if($result != null && count($result) > 0 && password_verify($_POST['password'], $result['password'])){
             $_SESSION['username'] = $result['username'];
             header('Location: /MEOWTTER');
         }else{
@@ -39,7 +40,7 @@
         <?php require 'includes/header.php' ?>
 
         <?php if(!empty($message)): ?>
-            <p> <?= $message ?> </p>
+            <p><?= $message ?></p>
         <?php endif; ?>
 
         <h1>Inicia sesión</h1>
