@@ -35,14 +35,13 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
     <?php if (!empty($user)) : ?>
         <div class="container">
             <div class="profile-section">
-                <h2>Bienvenido, <?= $user['username'] ?></h2>
-                <!-- User profile information -->
-                <p>Rol: <?= $user['role'] ?></p>
-                <p>Tienes la sesión iniciada</p>
-                <a href="logout.php">Cerrar sesión</a>
+                <h2><?= $user['username'] ?></h2>
 
                 <button onclick="showPosts()">Posts</button>
                 <button onclick="showExplore()">Explore</button>
+
+                <!-- User profile information -->
+                <a href="logout.php">Cerrar sesión</a>
             </div>
             <div class="posts-section" id="posts-section">
                 <h2>Feed</h2>
@@ -54,28 +53,11 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
                     <p id="errorMessage" style="color: red;"></p>
                 </form>
 
-                <script>
-                    function validateMeow() {
-                        var content = document.getElementById('content').value;
-                        var errorMessage = document.getElementById('errorMessage');
-
-                        if (content.length < 5) {
-                            errorMessage.textContent = "Tu meow debe tener al menos 5 caracteres.";
-                            return false;
-                        }
-
-                        if (content.length > 250) {
-                            errorMessage.textContent = "Tu meow no puede tener más de 250 caracteres.";
-                            return false;
-                        }
-                        errorMessage.textContent = "";
-                        return true;
-                    }
-                </script>
+                <script src="./script/validateMeow.js"></script>
 
                 <!-- List of meows of your follows -->
                 <?php
-                $postsQuery = $conn->prepare('SELECT * FROM MEOWS
+                $postsQuery = $conn->prepare('SELECT `user`, `content`, DATE_FORMAT(postTime, \'%H:%i\') AS postHour FROM MEOWS
                                                     WHERE USER IN
                                                         (SELECT DISTINCT(FOLLOWED_USER) FROM FOLLOWS WHERE FOLLOWING_USER = :user)
                                                     ORDER BY postTime DESC
@@ -87,7 +69,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
                 ?>
                     <div class="post">
                         <p><strong><?= htmlspecialchars($post['user']) ?>:</strong> <?= htmlspecialchars($post['content']) ?></p>
-                        <p><small><?= htmlspecialchars($post['postTime']) ?></small></p>
+                        <p><small><?= htmlspecialchars($post['postHour']) ?></small></p>
                     </div>
                 <?php
                 }
@@ -99,7 +81,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
 
                 <!-- List of all meows -->
                 <?php
-                $postsQuery = $conn->prepare('SELECT * FROM MEOWS
+                $postsQuery = $conn->prepare('SELECT `user`, `content`, DATE_FORMAT(postTime, \'%H:%i\') AS postHour FROM MEOWS
                                                     ORDER BY postTime DESC
                                                     LIMIT 25');
                 $postsQuery->execute();
@@ -108,7 +90,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
                 ?>
                     <div class="post">
                         <p><strong><?= htmlspecialchars($post['user']) ?>:</strong> <?= htmlspecialchars($post['content']) ?></p>
-                        <p><small><?= htmlspecialchars($post['postTime']) ?></small></p>
+                        <p><small><?= htmlspecialchars($post['postHour']) ?></small></p>
                     </div>
                 <?php
                 }
@@ -116,19 +98,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
 
             </div>
 
-            <script>
-                // Función para mostrar la sección de Posts y ocultar Explore
-                function showPosts() {
-                    document.getElementById('posts-section').style.display = 'block';
-                    document.getElementById('explore-section').style.display = 'none';
-                }
-
-                // Función para mostrar la sección de Explore y ocultar Posts
-                function showExplore() {
-                    document.getElementById('posts-section').style.display = 'none';
-                    document.getElementById('explore-section').style.display = 'block';
-                }
-            </script>
+            <script src="./script/showFilters.js"></script>
         </div>
     <?php else : ?>
         <?php header('Location: /MEOWTTER/login.php'); ?>
