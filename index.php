@@ -49,10 +49,7 @@
             <br>Tienes la sesión iniciada
             <a href="logout.php">Cerrar sesión</a>
         <?php else: ?>
-            <h1>Login or Sign up</h1>
-
-            <a href="login.php">Login</a> or
-            <a href="signup.php">Sign up</a>
+            <?php header('Location: /MEOWTTER/login.php'); ?>
         <?php endif; ?>
 
     </body>
