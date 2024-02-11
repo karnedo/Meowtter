@@ -1,15 +1,22 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
     session_start();
-
-    //If there's a logged user, redirect to the main page
-    if(isset($_SESSION['username'])){
-        header('Location: /MEOWTTER');
-    }
 
     require 'database.php';
 
+    // If there are cookies, check them against the database
+    if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
+        $records = $conn->prepare('SELECT username, email, password FROM USERS WHERE username = :username');
+        $records->bindParam(':username', $_COOKIE['username']);
+        $records->execute();
+        $result = $records->fetch(PDO::FETCH_ASSOC);
+
+        // If the user is found and the password matches, redirect to the main page
+        if ($result != null && count($result) > 0 && password_verify($_COOKIE['password'], $result['password'])) {
+            header('Location: /MEOWTTER');
+        }
+    }
+
+    //If there are not cookies, use the form
     if(!empty($_POST['email']) && !empty($_POST['password'])){
         $records = $conn->prepare('SELECT username, email, password FROM USERS WHERE email = :email');
         $records->bindParam(':email', $_POST['email']);
@@ -18,15 +25,15 @@ ini_set('display_errors', 1);
 
         $message = '';
 
-        //Set the session and redirect to the main page
-        if($result != null && count($result) > 0 && password_verify($_POST['password'], $result['password'])){
-            $_SESSION['username'] = $result['username'];
+        // Set the session and cookies, and redirect to the main page
+        if ($result != null && count($result) > 0 && password_verify($_POST['password'], $result['password'])) {
+            setcookie('username', $result['username'], time() + 604800, '/'); // Cookie expires in a week
+            setcookie('password', $result['password'], time() + 604800, '/');
             header('Location: /MEOWTTER');
-        }else{
+        } else {
             $message = 'Credenciales incorrectas.';
         }
     }
-
 ?>
 
 <!DOCTYPE html>

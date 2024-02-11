@@ -1,18 +1,17 @@
 <?php
-    session_start();
-
     require 'database.php';
 
     //Check if there's a logged user
-    if(isset($_SESSION['username'])){
-        $record = $conn->prepare('SELECT username, email, password, role FROM USERS WHERE username = :username');
-        $record->bindParam(':username', $_SESSION['username']);
+    if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
+        $record = $conn->prepare('SELECT username, email, password, role FROM USERS WHERE username = :username AND `password` = :password');
+        $record->bindParam(':username', $_COOKIE['username']);
+        $record->bindParam(':password', $_COOKIE['password']);
         $record->execute();
         $result = $record->fetch(PDO::FETCH_ASSOC);
 
         $user = null;
 
-        if(count($result) > 0){
+        if($record && $result !== false && count($result) > 0){
             $user = $result;
         }
     }
