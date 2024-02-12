@@ -41,7 +41,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
                 <button onclick="showExplore()">Explore</button>
 
                 <!-- User profile information -->
-                <a href="profile.php">Perfil</a>
+                <a href="profile.php"> Mi Perfil</a>
                 <a href="logout.php">Cerrar sesión</a>
             </div>
             <div class="posts-section" id="posts-section">
