@@ -1,5 +1,10 @@
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 require 'database.php';
+include 'includes/functions.php';
 
 //Check if there's a logged user
 if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
@@ -57,22 +62,15 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
 
                 <!-- List of meows of your follows -->
                 <?php
-                $postsQuery = $conn->prepare('SELECT `user`, `content`, DATE_FORMAT(postTime, \'%H:%i\') AS postHour FROM MEOWS
-                                                    WHERE USER IN
-                                                        (SELECT DISTINCT(FOLLOWED_USER) FROM FOLLOWS WHERE FOLLOWING_USER = :user)
-                                                    ORDER BY postTime DESC
-                                                    LIMIT 25');
-                $postsQuery->bindParam(':user', $user['username']);
-                $postsQuery->execute();
+                
+                $postsQuery = 'SELECT `user`, `content`, DATE_FORMAT(postTime, \'%H:%i\') AS postHour FROM MEOWS
+                WHERE USER IN
+                    (SELECT DISTINCT(FOLLOWED_USER) FROM FOLLOWS WHERE FOLLOWING_USER = :user)
+                ORDER BY postTime DESC
+                LIMIT 25';
 
-                while ($post = $postsQuery->fetch(PDO::FETCH_ASSOC)) {
-                ?>
-                    <div class="post">
-                        <p><strong><?= htmlspecialchars($post['user']) ?>:</strong> <?= htmlspecialchars($post['content']) ?></p>
-                        <p><small><?= htmlspecialchars($post['postHour']) ?></small></p>
-                    </div>
-                <?php
-                }
+                fetchMeows($conn, $postsQuery, [':user' => $user['username']]);
+
                 ?>
 
             </div>
@@ -81,19 +79,10 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
 
                 <!-- List of all meows -->
                 <?php
-                $postsQuery = $conn->prepare('SELECT `user`, `content`, DATE_FORMAT(postTime, \'%H:%i\') AS postHour FROM MEOWS
+                $postsQuery = 'SELECT `user`, `content`, DATE_FORMAT(postTime, \'%H:%i\') AS postHour FROM MEOWS
                                                     ORDER BY postTime DESC
-                                                    LIMIT 25');
-                $postsQuery->execute();
-
-                while ($post = $postsQuery->fetch(PDO::FETCH_ASSOC)) {
-                ?>
-                    <div class="post">
-                        <p><strong><?= htmlspecialchars($post['user']) ?>:</strong> <?= htmlspecialchars($post['content']) ?></p>
-                        <p><small><?= htmlspecialchars($post['postHour']) ?></small></p>
-                    </div>
-                <?php
-                }
+                                                    LIMIT 25';
+                fetchMeows($conn, $postsQuery);
                 ?>
 
             </div>
