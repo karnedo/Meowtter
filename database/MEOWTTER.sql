@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 10, 2024 at 01:44 PM
+-- Generation Time: Feb 09, 2024 at 11:38 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -78,18 +78,19 @@ CREATE TABLE `MEOWS` (
 CREATE TABLE `USERS` (
   `username` varchar(30) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `role` varchar(10) NOT NULL DEFAULT 'REGULAR' COMMENT 'ADMIN for administrator, MOD for moderator, REGULAR for normal users',
+  `role` varchar(10) NOT NULL COMMENT 'ADMIN for administrator, MOD for moderator, REGULAR for normal users',
   `bannedUntil` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'null for not banned',
-  `profileImage` varchar(255) DEFAULT NULL COMMENT 'null for default image',
-  `password` varchar(255) NOT NULL
+  `profileImage` varchar(255) DEFAULT NULL COMMENT 'null for default image'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `USERS`
 --
 
-INSERT INTO `USERS` (`username`, `email`, `role`, `bannedUntil`, `profileImage`, `password`) VALUES
-('ADMINISTRATOR', 'sistemasdegestionempresarial@iesayala.com 	', 'ADMIN', '2024-02-10 12:44:46', NULL, '$2y$10$xEzJaYto03lBYnd.QmefGeL.eRAuRrSe.bH0TqfBp8dMBtypthuU2');
+INSERT INTO `USERS` (`username`, `email`, `role`, `bannedUntil`, `profileImage`) VALUES
+('ADMINISTRATOR', 'sistemasdegestionempresarial@iesayala.com', 'ADMIN', '2024-02-09 22:35:32', NULL),
+('jose', 'joseltrrdz@hotmail.com', 'MOD', '2024-02-09 22:35:56', NULL),
+('pepe', 'creadordeluniverso@iesayala.com', 'REGULAR', '2024-02-09 22:36:32', NULL);
 
 --
 -- Indexes for dumped tables
