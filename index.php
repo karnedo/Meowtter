@@ -93,6 +93,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
     <?php endif; ?>
 
     <?php require 'includes/footer.php' ?>
+    <?php require 'includes/footer.php'?>
 </body>
 
 </html>
