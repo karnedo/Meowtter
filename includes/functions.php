@@ -30,7 +30,8 @@ function fetchMeows($conn, $query, $params = null) {
 }
 
 function showPost($username, $content, $hour) {
-    return '<div class="post">
+    return
+    '<div class="post">
         <p><strong>' . htmlspecialchars($username) . ':</strong> ' . htmlspecialchars($content) . '</p>
         <p><small>' . htmlspecialchars($hour) . '</small></p>
     </div>';

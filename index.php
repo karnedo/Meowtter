@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
 
 require 'database.php';
 include 'includes/functions.php';
@@ -62,7 +59,6 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
 
                 <!-- List of meows of your follows -->
                 <?php
-                
                 $postsQuery = 'SELECT `user`, `content`, DATE_FORMAT(postTime, \'%H:%i\') AS postHour FROM MEOWS
                 WHERE USER IN
                     (SELECT DISTINCT(FOLLOWED_USER) FROM FOLLOWS WHERE FOLLOWING_USER = :user)
@@ -70,7 +66,6 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
                 LIMIT 25';
 
                 fetchMeows($conn, $postsQuery, [':user' => $user['username']]);
-
                 ?>
 
             </div>
@@ -93,6 +88,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
         <?php header('Location: /MEOWTTER/login.php'); ?>
     <?php endif; ?>
 
+    <?php require 'includes/footer.php'?>
 </body>
 
 </html>
