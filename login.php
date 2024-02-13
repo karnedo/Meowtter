@@ -40,23 +40,29 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Login</title>
+        <title>MEOWTTER</title>
         <link rel="stylesheet" href="assets/style/style.css">
     </head>
     <body>
-        <?php require 'includes/header.php' ?>
-
-        <?php if(!empty($message)): ?>
-            <p><?= $message ?></p>
-        <?php endif; ?>
-
-        <h1>Inicia sesión</h1>
-        <span>o <a href="signup.php">regístrate</a></span>
-        
-        <form action="login.php" method="post">
-            <input type="text" name="email" placeholder="Ingresa tu email">
-            <input type="password" name="password" placeholder="Ingresa tu contraseña">
-            <input type="submit" value="Send">
-        </form>
+    <?php if(!empty($message)): ?>
+    <p><?= $message ?></p>
+    <?php endif; ?>
+        <div class="container">
+            <div class="top-section">
+                <img src="img/logoSistemas1.png" alt="Logo de la página" class="logo">
+                <div class="top-section-text">
+                    <text class="principal">Inicio Sesión</text>
+                    <text><span class="enlace"> o <a href="signup.php">Regístrate</a></span></text>
+                </div>
+            </div>
+            <div  class="form-section">
+                <form action="login.php" method="post">
+                <input type="text" name="email" placeholder="Ingresa tu email">
+                <input type="password" name="password" placeholder="Ingresa tu contraseña">
+                <input type="submit" value="Enviar">
+                </form>
+            </div>
+            
+        </div>
     </body>
 </html>

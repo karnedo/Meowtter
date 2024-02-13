@@ -48,21 +48,28 @@
         <link rel="stylesheet" href="assets/style/style.css">
     </head>
     <body>
-        <?php require 'includes/header.php' ?>
-
-        <?php if(!empty($message)): ?>
-            <p><?= $message ?></p>
-        <?php endif; ?>
-
-        <h1>Registro</h1>
-        <span>o <a href="login.php">inicia sesión</a></span>
-        
-        <form action="signup.php" method="post">
-            <input type="text" name="username" placeholder="Ingresa tu nombre de usuario">
-            <input type="text" name="email" placeholder="Ingresa tu email">
-            <input type="password" name="password" placeholder="Ingresa tu contraseña">
-            <input type="password" name="confirm_password" placeholder="Confirma tu contraseña">
-            <input type="submit" value="Send">
-        </form>
+        <div class="container">
+            <div class="top-section">
+                <img src="img/logoSistemas1.png" alt="Logo de la página" class="logo">
+                <div class="top-section-text">
+                    <text class="principal">Registro</text>
+                    <text><span class="enlace"> o <a href="login.php">inicia sesión</a></span></text>
+                </div>
+            </div>
+            <div  class="form-section">
+                <form action="signup.php" method="post">
+                <input type="text" name="username" placeholder="Ingresa tu nombre de usuario">
+                <input type="text" name="email" placeholder="Ingresa tu email">
+                <input type="password" name="password" placeholder="Ingresa tu contraseña">
+                <input type="password" name="confirm_password" placeholder="Confirma tu contraseña">
+                    <?php if(!empty($message)): ?>
+                    <p><?= $message ?></p>
+                    <?php endif; ?>
+                <input type="submit" value="Enviar">
+                    
+                </form>
+            </div>
+            
+        </div>
     </body>
 </html>
