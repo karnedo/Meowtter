@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
 
 require 'database.php';
 include 'includes/functions.php';
@@ -32,10 +29,6 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
 </head>
 
 <body>
-
-    <!-- This, unlike "include", does not allow the website to be executed if it does not find the file -->
-    <?php require 'includes/header.php' ?>
-
     <!-- If there's a user, show the feed. If not, go to the login screen -->
     <?php if (!empty($user)) : ?>
         <div class="container">
@@ -62,15 +55,16 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
 
                 <!-- List of meows of your follows -->
                 <?php
-                
-                $postsQuery = 'SELECT `user`, `content`, DATE_FORMAT(postTime, \'%H:%i\') AS postHour FROM MEOWS
-                WHERE USER IN
-                    (SELECT DISTINCT(FOLLOWED_USER) FROM FOLLOWS WHERE FOLLOWING_USER = :user)
-                ORDER BY postTime DESC
-                LIMIT 25';
+                $postsQuery = 'SELECT M.`id` AS id, M.`content` AS content, M.`user` AS user,
+                                    DATE_FORMAT(M.postTime, \'%H:%i\') AS postHour, COUNT(L.id) AS like_count
+                                FROM MEOWS M LEFT JOIN LIKES L ON M.id = L.meow
+                                WHERE M.USER IN
+                                    (SELECT DISTINCT(FOLLOWED_USER) FROM FOLLOWS WHERE FOLLOWING_USER = :user)
+                                GROUP BY M.id, M.content, M.user, M.postTime
+                                ORDER BY M.postTime DESC
+                                LIMIT 25';
 
-                fetchMeows($conn, $postsQuery, [':user' => $user['username']]);
-
+                fetchMeows($user['username'], $conn, $postsQuery, [':user' => $user['username']]);
                 ?>
 
             </div>
@@ -79,13 +73,18 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
 
                 <!-- List of all meows -->
                 <?php
-                $postsQuery = 'SELECT `user`, `content`, DATE_FORMAT(postTime, \'%H:%i\') AS postHour FROM MEOWS
-                                                    ORDER BY postTime DESC
-                                                    LIMIT 25';
-                fetchMeows($conn, $postsQuery);
+                $postsQuery = 'SELECT M.`id` AS id, M.`content` AS content, M.`user` AS user,
+                                    DATE_FORMAT(M.postTime, \'%H:%i\') AS postHour, COUNT(L.id) AS like_count
+                                FROM MEOWS M LEFT JOIN LIKES L ON M.id = L.meow
+                                GROUP BY M.id, M.content, M.user, M.postTime
+                                ORDER BY M.postTime DESC
+                                LIMIT 25';
+                fetchMeows($user['username'], $conn, $postsQuery);
                 ?>
 
             </div>
+
+            <script src="./jquery-3.7.1.min.js"></script>
 
             <script src="./script/showFilters.js"></script>
         </div>
@@ -93,6 +92,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
         <?php header('Location: /MEOWTTER/login.php'); ?>
     <?php endif; ?>
 
+    <?php require 'includes/footer.php' ?>
 </body>
 
 </html>
