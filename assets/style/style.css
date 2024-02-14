@@ -30,7 +30,11 @@ header a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(750px + 10vw);
     min-height: 550px;
+    min-width: 70vw;
     align-items: center;
     background-image: url('../../img/gatoNaranja.png');
     background-size: contain; /* Cambiado a 'contain' */
@@ -38,6 +42,12 @@ header a {
     background-repeat: no-repeat;
     /* Aplicar sombra directamente a la imagen de fondo */
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7)); /* Se puede ajustar según el efecto deseado */
+}
+
+@media (min-width: 1024px) {
+    .container {
+        background-size: 100% 100%; /* Mantener '100% 100%' en pantallas más grandes */
+    }
 }
 
 /*Formulario*/ 
