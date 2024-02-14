@@ -35,9 +35,6 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
             <div class="profile-section">
                 <h2><?= $user['username'] ?></h2>
 
-                <button onclick="showPosts()">Posts</button>
-                <button onclick="showExplore()">Explore</button>
-
                 <!-- User profile information -->
                 <a href="logout.php">Cerrar sesión</a>
             </div>
@@ -68,23 +65,33 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
                 ?>
 
             </div>
-            <div class="explore-section" id="explore-section" style="display: none;">
-                <h2>Explore</h2>
 
-                <!-- List of all meows -->
-                <?php
-                $postsQuery = 'SELECT M.`id` AS id, M.`content` AS content, M.`user` AS user,
-                                    DATE_FORMAT(M.postTime, \'%H:%i\') AS postHour, COUNT(L.id) AS like_count
-                                FROM MEOWS M LEFT JOIN LIKES L ON M.id = L.meow
-                                GROUP BY M.id, M.content, M.user, M.postTime
-                                ORDER BY M.postTime DESC
-                                LIMIT 25';
-                fetchMeows($user['username'], $conn, $postsQuery);
-                ?>
+            <script>
+                function toggleLike(postId, user) {
+                    // Make an AJAX request to a PHP script that handles like/unlike
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            console.log(xhr.responseText);
+                            // Update the like count in the DOM
+                            document.getElementById('likeCount_' + postId).innerHTML = xhr.responseText;
 
-            </div>
+                            // Get the current like button element
+                            var likeButton = document.querySelector('#likeButton_' + postId);
 
-            <script src="./jquery-3.7.1.min.js"></script>
+                            // Toggle between 💖 and 💔
+                            likeButton.innerText = (likeButton.innerText === '💖') ? '💔' : '💖';
+                        }
+                    };
+                    xhr.open('POST', 'like_handler.php', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                    // Combine data into a single call to send
+                    var data = 'postId=' + postId + '&user=' + user;
+                    xhr.send(data);
+                }
+            </script>
+
 
             <script src="./script/showFilters.js"></script>
         </div>
@@ -93,7 +100,6 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
     <?php endif; ?>
 
     <?php require 'includes/footer.php' ?>
-    <?php require 'includes/footer.php'?>
 </body>
 
 </html>

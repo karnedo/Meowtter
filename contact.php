@@ -29,8 +29,6 @@
 
 <body>
 
-    <?php require 'includes/header.php' ?>
-
     <div class="contactForm">
         <form action="/MEOWTTER/contact.php" method="post">
             <input id="email" type="email" name="email" placeholder="Email" required="">
