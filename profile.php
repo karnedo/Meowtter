@@ -45,7 +45,7 @@ if ( isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
     <!-- If there's a user, show the feed. If not, go to the login screen -->
     <?php if (!empty($user)) : ?>
         <div class="container">
-        
+            <!-- -->
             <h2><?= htmlspecialchars($user) ?></h2>
         
             <!-- If the obtained $user matches the $username, show the edit profile picture -->

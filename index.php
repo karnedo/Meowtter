@@ -39,7 +39,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
 
                 <button onclick="showPosts()">Posts</button>
                 <button onclick="showExplore()">Explore</button>
-
+                <!-- -->
                 <!-- User profile information -->
                 <a href="profile.php?user=<?= htmlspecialchars($user['username'])?>"> Mi Perfil</a>
                 <a href="logout.php">Cerrar sesión</a>
