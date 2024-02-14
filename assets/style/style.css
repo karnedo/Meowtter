@@ -25,17 +25,19 @@ header a {
 
 /*Login*/
 
-
 .container {
     margin-top: 2%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: calc(350px + 70vw);
-    height: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(750px + 10vw);
+    min-height: 550px;
+    min-width: 70vw;
     align-items: center;
     background-image: url('../../img/gatoNaranja.png');
-    background-size: contain;
+    background-size: contain; /* Cambiado a 'contain' */
     background-position: center;
     background-repeat: no-repeat;
     /* Aplicar sombra directamente a la imagen de fondo */
@@ -92,9 +94,9 @@ input[type="submit"]:hover {
 
 .top-section .logo {
     display: flex;
-    width: 6vw; /* Tamaño deseado del logo */
-    min-width: 50px; /* Tamaño mínimo de ancho */
-    min-height: 50px;
+    width: 60px; /* Tamaño deseado del logo */
+    min-width: 3vw; /* Tamaño mínimo de ancho */
+    min-height: 5vh;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
 }
 
@@ -108,14 +110,10 @@ input[type="submit"]:hover {
     color: white;
     font-style: normal;
     text-align: center;
-    width: 30vw;
+    font-size: 20px;
     justify-content:center;
     align-items: center;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
-}
-
-.principal{
-    font-size:calc(15px + 2vw);
 }
 
 .enlace{
