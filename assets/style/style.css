@@ -44,12 +44,6 @@ header a {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7)); /* Se puede ajustar según el efecto deseado */
 }
 
-@media (min-width: 1024px) {
-    .container {
-        background-size: 100% 100%; /* Mantener '100% 100%' en pantallas más grandes */
-    }
-}
-
 /*Formulario*/ 
 
 input[type="text"], input[type="password"] {
@@ -100,9 +94,9 @@ input[type="submit"]:hover {
 
 .top-section .logo {
     display: flex;
-    width: 6vw; /* Tamaño deseado del logo */
-    min-width: 50px; /* Tamaño mínimo de ancho */
-    min-height: 50px;
+    width: 60px; /* Tamaño deseado del logo */
+    min-width: 3vw; /* Tamaño mínimo de ancho */
+    min-height: 5vh;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
 }
 
@@ -116,14 +110,10 @@ input[type="submit"]:hover {
     color: white;
     font-style: normal;
     text-align: center;
-    width: 30vw;
+    font-size: 20px;
     justify-content:center;
     align-items: center;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
-}
-
-.principal{
-    font-size:calc(15px + 2vw);
 }
 
 .enlace{
