@@ -41,7 +41,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
                 <button onclick="showExplore()">Explore</button>
 
                 <!-- User profile information -->
-                <a href="profile.php"> Mi Perfil</a>
+                <a href="profile.php?user=<?= htmlspecialchars($user['username'])?>"> Mi Perfil</a>
                 <a href="logout.php">Cerrar sesión</a>
             </div>
             <div class="posts-section" id="posts-section">
@@ -69,7 +69,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
                 while ($post = $postsQuery->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                     <div class="post">
-                        <p><strong><?= htmlspecialchars($post['user']) ?>:</strong> <?= htmlspecialchars($post['content']) ?></p>
+                        <p><strong><a href="profile.php?user=<?= htmlspecialchars($post['user'])?>"><?= htmlspecialchars($post['user'])?></a>:</strong> <?= htmlspecialchars($post['content']) ?></p>
                         <p><small><?= htmlspecialchars($post['postHour']) ?></small></p>
                     </div>
                 <?php
@@ -90,7 +90,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
                 while ($post = $postsQuery->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                     <div class="post">
-                        <p><strong><?= htmlspecialchars($post['user']) ?>:</strong> <?= htmlspecialchars($post['content']) ?></p>
+                        <p><strong><a href="profile.php?user=<?= htmlspecialchars($post['user'])?>"><?= htmlspecialchars($post['user'])?></a>:</strong> <?= htmlspecialchars($post['content']) ?></p>
                         <p><small><?= htmlspecialchars($post['postHour']) ?></small></p>
                     </div>
                 <?php
