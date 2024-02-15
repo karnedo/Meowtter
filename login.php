@@ -57,8 +57,8 @@
             </div>
             <div  class="form-section">
                 <form action="login.php" method="post">
-                <input type="text" name="email" placeholder="Ingresa tu email">
-                <input type="password" name="password" placeholder="Ingresa tu contraseña">
+                <input type="text" name="email" placeholder="Ingresa tu email" required/>
+                <input type="password" name="password" placeholder="Ingresa tu contraseña" required/>
                 <input type="submit" value="Enviar">
                 </form>
             </div>
