@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Incluir la función toggleFollow
         include 'includes/functions.php';
-        include 'database.php';
+        include 'includes/database.php';
 
         toggleFollow($conn, $followingUser, $followedUser);
 

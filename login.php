@@ -1,22 +1,14 @@
 <?php
     session_start();
 
-    require 'database.php';
+    require 'includes/database.php';
 
-    // If there are cookies, check them against the database
-    if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
-        $records = $conn->prepare('SELECT username, email, password FROM USERS WHERE username = :username');
-        $records->bindParam(':username', $_COOKIE['username']);
-        $records->execute();
-        $result = $records->fetch(PDO::FETCH_ASSOC);
-
-        // If the user is found and the password matches, redirect to the main page
-        if ($result != null && count($result) > 0 && password_verify($_COOKIE['password'], $result['password'])) {
-            header('Location: /MEOWTTER');
-        }
+    // If there is a session go to the main page
+    if(isset($_SESSION['username']) && isset($_SESSION['password'])){
+        header('Location: /MEOWTTER');
     }
 
-    //If there are not cookies, use the form
+    //If there is no session, use the form
     if(!empty($_POST['email']) && !empty($_POST['password'])){
         $records = $conn->prepare('SELECT username, email, password FROM USERS WHERE email = :email');
         $records->bindParam(':email', $_POST['email']);
@@ -27,8 +19,9 @@
 
         // Set the session and cookies, and redirect to the main page
         if ($result != null && count($result) > 0 && password_verify($_POST['password'], $result['password'])) {
-            setcookie('username', $result['username'], time() + 604800, '/'); // Cookie expires in a week
-            setcookie('password', $result['password'], time() + 604800, '/');
+            //setcookie('password', $result['password'], time() + 604800, '/');
+            $_SESSION["username"] = $result['username'];
+            $_SESSION["password"] = $result["password"];
             header('Location: /MEOWTTER');
         } else {
             $message = 'Credenciales incorrectas.';
