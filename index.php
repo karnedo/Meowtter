@@ -1,53 +1,27 @@
 <?php
-include 'includes/getUser.php';
-include 'includes/functions.php';
-?>
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>MEOWTTER</title>
-    <link rel="stylesheet" href="assets/style/style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="profile-section">
-            <h2><?= $user['username'] ?></h2>
-
-            <!-- User profile information -->
-            <a href="logout.php">Cerrar sesión</a>
-        </div>
-        <div class="posts-section" id="posts-section">
-            <h2>Feed</h2>
-
-            <!-- Post a new meow -->
-            <form action="./upload_meow.php" method="get" onsubmit="return validateMeow();">
-                <textarea id="content" name="content" placeholder="Maúlla al mundo lo que sientes..." required></textarea>
-                <button type="submit">Publicar</button>
-                <p id="errorMessage" style="color: red;"></p>
-            </form>
-            <script src="./script/validateMeow.js"></script>
-
-            <!-- List of meows of your follows -->
-            <?php
-            $postsQuery = 'SELECT M.`id` AS id, M.`content` AS content, M.`user` AS user,
-                                    DATE_FORMAT(M.postTime, \'%H:%i\') AS postHour, COUNT(L.id) AS like_count
-                                FROM MEOWS M LEFT JOIN LIKES L ON M.id = L.meow
-                                WHERE M.USER IN
-                                    (SELECT DISTINCT(FOLLOWED_USER) FROM FOLLOWS WHERE FOLLOWING_USER = :user)
-                                GROUP BY M.id, M.content, M.user, M.postTime
-                                ORDER BY M.postTime DESC
-                                LIMIT 25';
-
-            fetchMeows($conn, $postsQuery, [':user' => $_SESSION['username']]);
-            ?>
-
-        </div>
-
-        <script src="./script/toggleLike.js"></script>
-    </div>
-
-    <?php require 'includes/footer.php' ?>
-</body>
-</html>
+    switch ($page) {
+        case 'login':
+            header('Location: login.php'); //index.php?page=contact
+            break;
+        case 'contact':
+            header('Location: contact.php');
+            break;
+        case 'explore':
+            header("Location: home.php?section=explore");
+            break;
+        case 'feed':
+            header("Location: home.php");
+            break;
+        case 'profile':
+            header("Location: profile.php");
+            break;
+        default:
+            header("Location: 404.php");
+            break;
+    }
+} else {
+    header('Location: home.php');
+}

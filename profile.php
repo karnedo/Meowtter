@@ -4,14 +4,17 @@ include 'includes/functions.php';
 
 if (isset($_GET['user'])) {
     $targetUser = $_GET['user']; //this users page
-
-    //List of following users of your user and the followed user is $user 
-    $postsQuery = $conn->prepare('SELECT `followed_user` FROM FOLLOWS WHERE following_user = :username and followed_user = :follow_user');
-    $postsQuery->bindParam(':username', $user['username']);
-    $postsQuery->bindParam(':follow_user', $targetUser);
-    $postsQuery->execute();
-    $followedUsers = $postsQuery->fetch(PDO::FETCH_ASSOC);
+}else{
+    //If no user is provided, use session's current user
+    $targetUser = $user['username'];
 }
+
+//List of following users of your user and the followed user is $user 
+$postsQuery = $conn->prepare('SELECT `followed_user` FROM FOLLOWS WHERE following_user = :username and followed_user = :follow_user');
+$postsQuery->bindParam(':username', $user['username']);
+$postsQuery->bindParam(':follow_user', $targetUser);
+$postsQuery->execute();
+$followedUsers = $postsQuery->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -33,7 +36,7 @@ if (isset($_GET['user'])) {
         <h2><?= htmlspecialchars($targetUser) ?></h2>
 
         <!-- If the obtained $user matches the $username, show the edit profile picture -->
-        <?php if ($_GET['user'] == $user['username']) : ?>
+        <?php if ($targetUser == $user['username']) : ?>
             <form action="upload_profile_picture.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" id="username" name="username" value="<?= $user['username'] ?>" required>
                 <input type="file" id="picture" name="picture" accept=".jpg" required>

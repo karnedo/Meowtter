@@ -2,7 +2,7 @@
     require 'includes/database.php';
 
     $message = '';
-
+    
     if (!empty($_POST['email']) &&
         !empty($_POST['password']) &&
         !empty($_POST['username']) &&
@@ -30,7 +30,7 @@
                 if ($e->getCode() == '23000') {
                     $message = 'El nombre de usuario o el correo electrónico ya están registrados.';
                 } else {
-                    $message = 'Ha ocurrido un error inesperado registrando el usuario.';
+                    $message = 'Ha ocurrido un error inesperado registrando el usuario.'.$e;
                 }
             }
         }
