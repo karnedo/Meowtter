@@ -28,16 +28,17 @@
 </head>
 
 <body>
-
-    <div class="contactForm">
-        <form action="/MEOWTTER/contact.php" method="post">
-            <input id="email" type="email" name="email" placeholder="Email" required="">
-            <input id="subject" type="text" name="subject" placeholder="Asunto" required="">
-            <textarea id="content" name="content" placeholder="Escribe aquí lo que nos quieras decir..." required=""></textarea>
-            <button type="submit">Enviar</button>
-        </form>
+    <div class="contenedorContacto">
+        <div class="contactForm">
+            <form action="/MEOWTTER/contact.php" method="post">
+            <img src="img/logoSistemas1.png" alt="Logo de la página" class="logo">
+                <input id="email" type="email" name="email" placeholder="Email" required="">
+                <input id="subject" type="text" name="subject" placeholder="Asunto" required="">
+                <textarea id="content" name="content" placeholder="Escribe aquí lo que nos quieras decir..." required=""></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
     </div>
-
     <?php require 'includes/footer.php' ?>
 </body>
 

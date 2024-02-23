@@ -18,6 +18,9 @@ if (isset($_GET['page'])) {
         case 'profile':
             header("Location: profile.php");
             break;
+        case 'administrationPanel':
+            header('Location: administrationPanel.php');
+            break;
         default:
             header("Location: 404.php");
             break;

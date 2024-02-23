@@ -44,7 +44,7 @@
             <div class="top-section">
                 <img src="img/logoSistemas1.png" alt="Logo de la página" class="logo">
                 <div class="top-section-text">
-                    <text>Inicio Sesión</text>
+                    <text>Inicia Sesión</text>
                     <text><span class="enlace"> o <a href="signup.php">Regístrate</a></span></text>
                 </div>
             </div>
