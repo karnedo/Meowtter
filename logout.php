@@ -6,9 +6,6 @@
 
     session_destroy();
 
-    setcookie('username', $result['username'], time() - 3600, '/'); 
-    setcookie('password', $result['password'], time() - 3600, '/');
-
     header('Location: /MEOWTTER');
 
 ?>

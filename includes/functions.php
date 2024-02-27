@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
 function getProfilePicture($username) {
     $path = 'img/users/'.$username.'.jpg';
     if($username === null || $username === ''){
@@ -18,8 +15,6 @@ function getProfilePicture($username) {
 
 // returns 0 for success, 1 for error, 2 in case the picture is not jpg
 function uploadProfilePicture($username, $picture){
-    error_reporting(E_ALL);
-ini_set('display_errors', 1);
     $exitCode = 1; 
     $extension = pathinfo($picture['name'], PATHINFO_EXTENSION);
 
@@ -35,7 +30,17 @@ ini_set('display_errors', 1);
     return $exitCode;
 }
 
-function fetchMeows($sessionUser, $conn, $query, $params = null) {
+// function to check if a user has liked a post
+function hasUserLikedPost($conn, $username, $postId) {
+    $query = "SELECT COUNT(*) FROM LIKES WHERE user = ? AND meow = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$username, $postId]);
+    $likeCount = $stmt->fetchColumn();
+
+    return $likeCount > 0;
+}
+
+function fetchMeows($conn, $query, $params = null) {
     $meows = $conn->prepare($query);
 
     if($params){
@@ -45,14 +50,43 @@ function fetchMeows($sessionUser, $conn, $query, $params = null) {
     }
 
     while ($meow = $meows->fetch(PDO::FETCH_ASSOC)) {
+        $likedByUser = hasUserLikedPost($conn, $_SESSION['username'], $meow['id']);
+        $likeEmoji = $likedByUser ? '💖' : '💔';
+
         echo '<div class="post">
-            <p>'.getProfilePicture($meow['user']).'</p>
-            <p><strong>' . htmlspecialchars($meow['user']) . ':</strong> ' . htmlspecialchars($meow['content']) . '</p>
-            <p class="like-count" data-post-id="'.$meow['id'].'"><small>'.$meow['like_count'].'</small>
-                <button class="like-button" data-post-id="'.$meow['id'].'" data-username="'.$sessionUser.'">💖</button>
-            <small></small></p>
+            <p>' . getProfilePicture($meow['user']) . '</p>
+            <p><strong>
+                <a href="profile.php?user='.$meow['user'].'"><?= htmlspecialchars($meow[\'user\'])?>
+                </strong> ' . htmlspecialchars($meow['user']) . '</a>
+            </p>
+            <p>' . htmlspecialchars($meow['content']) . '</p>
+            <p><small id="likeCount_' . $meow['id'] . '">' . $meow['like_count'] . '</small>
+            <button id="likeButton_'.$meow['id'].'" onclick="toggleLike(' . $meow['id'] . ', \'' . $_SESSION['username'] . '\')">' . $likeEmoji . '</button>
             <p><small>' . htmlspecialchars($meow['postHour']) . '</small></p>
         </div>';
+    }
+}
+
+function isFollowing($conn, $followingUser, $followedUser){
+    $query = "SELECT COUNT(*) FROM FOLLOWS WHERE following_user = :followingUser AND followed_user = :followedUser";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([':followingUser' => $followingUser, ':followedUser' => $followedUser]);
+    $following = ($stmt->fetchColumn()) > 0;
+
+    return $following;
+}
+
+function toggleFollow($conn, $followingUser, $followedUser){
+    $following = isFollowing($conn, $followingUser, $followedUser);    
+
+    if($following){
+        $sql = "DELETE FROM FOLLOWS WHERE following_user = ? AND followed_user = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$followingUser, $followedUser]);
+    }else{
+        $sql = "INSERT INTO FOLLOWS VALUES (?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$followingUser, $followedUser]);
     }
 }
 
