@@ -1,0 +1,72 @@
+/*Footer*/
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.4vh; /* Cambia el tamaño de la fuente según sea necesario */
+    padding: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-right: 1vh solid rgb(195, 97, 5);
+    border-top: 1vh solid rgb(240, 118, 4);
+    background-color: rgb(255, 147, 46);
+    filter: drop-shadow(15px 0px 10px rgba(0, 0, 0, 0.653));
+    color: white;
+}
+
+footer .Footer {
+    display: flex;
+    align-items: center;
+}
+
+footer .Footer p {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+    margin-left: 40px;
+    margin-right: 40px; /* Elimina el margen predeterminado del párrafo */
+}
+
+footer .Footer a { /* Espacio entre elementos */
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+    text-decoration: none; /* Elimina los adornos de los enlaces */
+    color: inherit; /* Hereda el color del texto del elemento padre */
+}
+
+footer a img {
+    width: 60px; /* Tamaño deseado del logo */
+    min-width: 3vw; /* Tamaño mínimo de ancho */
+    min-height: 5vh;
+    max-width:5vw;
+    max-height: 9vh;
+    transition: filter 0.3s;
+}
+
+footer a img:hover{
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 3));
+}
+
+.contacto a {
+    color: white;
+    overflow: hidden;
+    display: flex;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.contacto a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: white;
+    transition: left 0.8s;
+}
+
+.contacto a:hover::after {
+    left: 0;
+}
