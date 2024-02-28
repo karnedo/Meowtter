@@ -1,0 +1,79 @@
+.post{
+    display: flex;
+    flex-direction: column;
+    background-color: burlywood;
+    border-radius: 10px;
+    width: 550px;
+    margin-bottom: 20px;
+    padding: 15px;
+    padding-bottom: 0%;
+}
+
+#perfil:link{
+    color: black;
+    text-decoration: none;
+}
+
+#perfil:visited{
+    color: black;
+    text-decoration: none;
+}
+
+#perfil:hover{
+    color: black;
+    background-color: rgb(255, 205, 113);
+    padding: 15%;
+    border-radius: 10px;
+}
+
+.meow-header {
+    display: flex;
+    align-items: flex-start;
+    font-size: larger;
+    border-bottom: chocolate 1px solid;
+}
+
+img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 3%;
+    margin-left: 1%;
+}
+
+#meow-content{
+    display: flex;
+    padding: 5%;
+    text-align: justify;
+    border-color: black;
+    border: 1%;
+    line-break: auto;
+}
+
+#text{
+    text-align: justify;
+    padding-left: 3%;
+    padding-right: 3%;
+    line-break: auto;
+    overflow-wrap: break-word;
+}
+
+#hora{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 80%;
+}
+
+.meow-like{
+    display: flex;
+    align-content: flex-start;
+    padding-left: 2%;
+    border: 1%;
+    border-color: black;
+    border-top: chocolate 1px solid;
+}
+
+small{
+    margin-right: 5px;
+}
+

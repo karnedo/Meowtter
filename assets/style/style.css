@@ -1,0 +1,143 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: rgb(255, 205, 113);
+}
+
+
+header {
+    border-bottom: 2px solid #f5deaf;
+    padding: 20px 0;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+header a {
+    text-decoration: none;
+    color: #00445f;
+}
+
+
+/*Login*/
+
+.container {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(750px + 10vw);
+    min-height: 550px;
+    min-width: 70vw;
+    align-items: center;
+    background-image: url('../../img/gatoNaranja.png');
+    background-size: contain; /* Cambiado a 'contain' */
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Aplicar sombra directamente a la imagen de fondo */
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7)); /* Se puede ajustar según el efecto deseado */
+}
+
+/*Formulario*/ 
+
+input[type="text"], input[type="password"] {
+    display: flex;
+    margin: 1vw;
+    padding: 0.5vw;
+    border-radius: 15px;
+    border: 1px solid rgb(156, 81, 0);
+    width: 200px; /* Ajusta el ancho según sea necesario */
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centra horizontalmente */
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    width: 150px;
+    color: #fff;
+    background: rgb(247, 164, 62);
+    border: 0;
+    border-radius: 15px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(175, 84, 0);
+}
+
+/*Arriba del formulario*/
+
+.top-section {
+
+    padding: 0;
+    display: flex;
+    margin-top: 8vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Logo*/
+
+.top-section .logo {
+    display: flex;
+    width: 60px; /* Tamaño deseado del logo */
+    min-width: 3vw; /* Tamaño mínimo de ancho */
+    min-height: 5vh;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+}
+
+/*Texto*/
+
+.top-section-text{
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    font-family: "Assistant", sans-serif;
+    color: white;
+    font-style: normal;
+    text-align: center;
+    font-size: 20px;
+    justify-content:center;
+    align-items: center;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+}
+
+.enlace{
+    font-size:calc(15px + 0.1vw);
+}
+
+.top-section-text a {
+    color: #ffffff; /* Cambia el color del texto del enlace */
+    text-decoration-color: white; /* Cambia el color del subrayado */
+}
+
+.top-section-text a:hover {
+    color: #ffddab; /* Cambia el color del texto del enlace al pasar el cursor */
+    text-decoration-color: #ffddab; /* Cambia el color del subrayado al pasar el cursor */
+    /* Puedes agregar otros estilos de hover según tus preferencias */
+}
+
+/*Respuesta del php*/
+
+p{
+    font-family: "Assistant", sans-serif;
+    color: white;
+    font-style: normal;
+    text-align: center;
+    font-size:calc(15px + 0.1vw);
+}
+
