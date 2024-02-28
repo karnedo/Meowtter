@@ -14,8 +14,10 @@ if(isset($_GET['content'])){
 
     // Go back to feed
     header('Location: /MEOWTTER');
+    die();
 } else {
     // If there is no user or content, go back to the feed
     header('Location: /MEOWTTER');
+    die();
 }
 ?>

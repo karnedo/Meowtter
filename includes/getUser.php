@@ -19,13 +19,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         $user = $result;
         // If the user is banned, go back to login
         if($user['is_Banned'] !== null and $user['is_Banned'] == 1){
-            header('Location: /MEOWTTER/login.php');
+            header('Location: /MEOWTTER/logout.php');
         }
     }else{
-        header('Location: /MEOWTTER/login.php');
+        header('Location: /MEOWTTER/logout.php');
     }
 }else{
-    header('Location: /MEOWTTER/login.php');
+    header('Location: /MEOWTTER/logout.php');
 }
 
 ?>

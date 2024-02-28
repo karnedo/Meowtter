@@ -6,6 +6,7 @@
     // If there is a session go to the main page
     if(isset($_SESSION['username']) && isset($_SESSION['password'])){
         header('Location: /MEOWTTER');
+        die();
     }
 
     //If there is no session, use the form
@@ -23,6 +24,7 @@
             $_SESSION["username"] = $result['username'];
             $_SESSION["password"] = $result["password"];
             header('Location: /MEOWTTER');
+            die();
         } else {
             $message = 'Credenciales incorrectas.';
         }

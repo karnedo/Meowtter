@@ -42,6 +42,7 @@
                         break;
                     default:
                         header("Location: 404.php");
+                        die();
                         break;
                 }
                 echo '<h2>'.ucfirst($section).'</h2>';

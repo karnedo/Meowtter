@@ -1,5 +1,6 @@
 <?php
     include 'includes/getUser.php';
+    include 'includes/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,12 +13,29 @@
 <body>
     <div class="container">
         <?php
-            if($user != 'ADMIN'){
+            if($user['role'] != 'ADMIN'){
                 echo "No tienes privilegios para acceder a esta página...";
             }else{
-                echo "Enhorabuena, tienes privilegios de administración.";
+                echo "PANEL DE ADMINISTRACIÓN";
                 include 'includes/adminFunctions.php';
-                usersTable($conn);
+                
+                if(isset($_GET['page'])){
+                    $page = $_GET['page'];
+                    switch ($page) {
+                        case 'modify':
+                                if(isset($_GET['username'])){
+                                    showModifyUser($conn, $_GET['username']);
+                                }else{
+                                    echo "No ha especificado ningún usuario que modificar.";
+                                }
+                            break;
+                        default:
+                            usersTable($conn);
+                            break;
+                    }
+                }else{
+                    usersTable($conn);
+                }
             }
         ?>
     </div>
