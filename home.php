@@ -15,9 +15,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="user-section">
-            <?php include 'includes/userSection.php'; ?>
-        </div>
+        <?php include 'includes/userSection.php'; ?>
         <div class="posts-section" id="posts-section">
             <?php
                 $section = "feed";
