@@ -15,7 +15,9 @@
 </head>
 <body>
     <div class="container">
-        <?php include 'includes/userSection.php'; ?>
+        <div class="user-section">
+            <?php include 'includes/userSection.php'; ?>
+        </div>
         <div class="posts-section" id="posts-section">
             <?php
                 $section = "feed";
@@ -59,9 +61,6 @@
                 echo '<h2>'.ucfirst($section).'</h2>';
             ?>    
         
-
-            
-
             <!-- List of meows of your follows -->
             <?php
                 fetchMeows($conn, $postsQuery, $params);

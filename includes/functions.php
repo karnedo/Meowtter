@@ -55,6 +55,7 @@ function fetchMeows($conn, $query, $params = null) {
         $meows->execute();
     }
 
+    echo '<div class="meows-list">';
     while ($meow = $meows->fetch(PDO::FETCH_ASSOC)) {
         $likedByUser = hasUserLikedPost($conn, $_SESSION['username'], $meow['id']);
         $likeEmoji = $likedByUser ? '💖' : '💔';
@@ -79,6 +80,7 @@ function fetchMeows($conn, $query, $params = null) {
             </div>
         </div>';
     }
+    echo '</div>';
 }
 
 function isFollowing($conn, $followingUser, $followedUser){
