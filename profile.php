@@ -82,7 +82,7 @@ $followedUsers = $postsQuery->fetch(PDO::FETCH_ASSOC);
             $postsQuery->execute();
             while ($post = $postsQuery->fetch(PDO::FETCH_ASSOC)) {
             ?>
-                <div class="usuario">S
+                <div class="usuario">
                     <p><strong><a href="profile.php?user=<?= htmlspecialchars($post['followed_user']) ?>"><?= htmlspecialchars($post['followed_user']) ?></a>
                 </div>
             <?php
