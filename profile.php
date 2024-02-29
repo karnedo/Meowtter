@@ -33,42 +33,46 @@ $followedUsers = $postsQuery->fetch(PDO::FETCH_ASSOC);
     <div class="container">
         <?php include 'includes/userSection.php'; ?>
 
-        <h2><?= htmlspecialchars($targetUser) ?></h2>
-
-        <?php echo '<span class="profile-picture">'.getProfilePicture($targetUser) .'</span>'?>
-
-        <!-- If the obtained $user matches the $username, show the edit profile picture -->
-        <?php if ($targetUser == $user['username']) : ?>
-            <form action="includes/upload_profile_picture.php" method="post" enctype="multipart/form-data">
-                <input type="hidden" id="username" name="username" value="<?= $user['username'] ?>" required>
-                <input type="file" id="picture" name="picture" accept=".jpg" required>
-                <input type="submit" value="Subir Imagen">
-            </form>
-            <!-- If not, show the button to unfollow the user  -->
-        <?php else : ?>
-            <form method="post" action="follow.php">
-                <input type="hidden" name="followingUser" value="<?= $user['username']; ?>">
-                <input type="hidden" name="followedUser" value="<?= $targetUser; ?>">
-                <button type="submit">
-                    <?php echo isFollowing($conn, $user['username'], $targetUser) ? "Dejar de seguir" : "Seguir"; ?>
-                </button>
-            </form>
-        <?php endif; ?>
-
         <div class="posts-section" id="posts-section">
+            <div class="edit_user">
+                 <h2><?= htmlspecialchars($targetUser) ?></h2>
+
+                <?php echo '<span class="profile-picture">'.getProfilePicture($targetUser) .'</span>'?>
+
+                <!-- If the obtained $user matches the $username, show the edit profile picture -->
+                <?php if ($targetUser == $user['username']) : ?>
+                    <form action="upload_profile_picture.php" method="post" enctype="multipart/form-data">
+                        <input type="hidden" id="username" name="username" value="<?= $user['username'] ?>" required>
+                        <input type="file" id="picture" name="picture" accept=".jpg" required>
+                        <input type="submit" value="Subir Imagen">
+                    </form>
+                    <!-- If not, show the button to unfollow the user  -->
+                <?php else : ?>
+                    <form method="post" action="follow.php">
+                        <input type="hidden" name="followingUser" value="<?= $user['username']; ?>">
+                        <input type="hidden" name="followedUser" value="<?= $targetUser; ?>">
+                        <button type="submit">
+                            <?php echo isFollowing($conn, $user['username'], $targetUser) ? "Dejar de seguir" : "Seguir"; ?>
+                        </button>
+                    </form>
+                <?php endif; ?>
+            </div>
+
             <h2>Meows</h2>
             <!-- List of meows of your user -->
-            <?php
-            $postsQuery = 'SELECT M.`id` AS id, M.`content` AS content, M.`user` AS user, DATE_FORMAT(M.postTime, \'%H:%i\') AS postHour, COUNT(L.id) AS like_count
-                            FROM MEOWS M LEFT JOIN LIKES L ON M.id = L.meow
-                            WHERE M.user = :user
-                            GROUP BY M.id, M.content, M.user, M.postTime
-                            ORDER BY M.postTime DESC
-                            LIMIT 25; ';
-            fetchMeows($conn, $postsQuery, [':user' => $targetUser]);
-            ?>
-
+            <div class="meows-list">
+                <?php
+                $postsQuery = 'SELECT M.`id` AS id, M.`content` AS content, M.`user` AS user, DATE_FORMAT(M.postTime, \'%H:%i\') AS postHour, COUNT(L.id) AS like_count
+                                FROM MEOWS M LEFT JOIN LIKES L ON M.id = L.meow
+                                WHERE M.user = :user
+                                GROUP BY M.id, M.content, M.user, M.postTime
+                                ORDER BY M.postTime DESC
+                                LIMIT 25; ';
+                fetchMeows($conn, $postsQuery, [':user' => $targetUser]);
+                ?>
+            </div>
         </div>
+
         <div class="follows-section" id="following-section">
             <!-- List of following users of your user -->
             <h2>Following</h2>
@@ -78,7 +82,7 @@ $followedUsers = $postsQuery->fetch(PDO::FETCH_ASSOC);
             $postsQuery->execute();
             while ($post = $postsQuery->fetch(PDO::FETCH_ASSOC)) {
             ?>
-                <div class="post">
+                <div class="usuario">S
                     <p><strong><a href="profile.php?user=<?= htmlspecialchars($post['followed_user']) ?>"><?= htmlspecialchars($post['followed_user']) ?></a>
                 </div>
             <?php
@@ -93,7 +97,7 @@ $followedUsers = $postsQuery->fetch(PDO::FETCH_ASSOC);
             $postsQuery->execute();
             while ($post = $postsQuery->fetch(PDO::FETCH_ASSOC)) {
             ?>
-                <div class="post">
+                <div class="usuario">
                     <p><strong><a href="profile.php?user=<?= htmlspecialchars($post['following_user']) ?>"><?= htmlspecialchars($post['following_user']) ?></a>
                 </div>
             <?php
