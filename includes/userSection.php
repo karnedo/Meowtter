@@ -1,4 +1,5 @@
 <div class="profile-section">
+    <?php echo '<span class="profile-picture">'.getProfilePicture($user['username']) .'</span>'?>
     <h2><?php echo '<a href="profile.php?user='.$user['username'].'">'.$user['username'].'</a>' ?></h2>
 
     <div class="nav">

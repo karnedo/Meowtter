@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 define('UPLOAD_SUCCESS', 0);
 define('UPLOAD_ERROR', 1);
 define('INVALID_TYPE', 2);
@@ -10,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $picture = $_FILES["picture"];
 
         // Incluir la función uploadProfilePicture
-        include 'includes/functions.php';
+        include 'functions.php';
 
         // Llamar a la función y obtener el código de error
         $errorCode = uploadProfilePicture($username, $picture);

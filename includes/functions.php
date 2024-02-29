@@ -18,10 +18,16 @@ function uploadProfilePicture($username, $picture){
     $exitCode = 1; 
     $extension = pathinfo($picture['name'], PATHINFO_EXTENSION);
 
+    $targetDirectory = '../img/users/';
+
+    if (!is_dir($targetDirectory)) {
+        mkdir($targetDirectory, 0755, true);
+    }
+
     if($extension != 'jpg'){
         $exitCode = 2;
-    }else{
-        $path = 'img/users/'.$username.'.'.$extension;
+    } else {
+        $path = $targetDirectory . $username . '.' . $extension;
         if(move_uploaded_file($picture['tmp_name'], $path)){
             $exitCode = 0;
         }

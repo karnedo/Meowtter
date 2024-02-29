@@ -25,19 +25,21 @@ $followedUsers = $postsQuery->fetch(PDO::FETCH_ASSOC);
     <meta charset="utf-8">
     <title>MEOWTTER</title>
     <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="assets/style/meowStyle.css">
 </head>
 
 <body>
 
     <div class="container">
-        <!-- -->
-        <a href="index.php">Feed</a>
+        <?php include 'includes/userSection.php'; ?>
 
         <h2><?= htmlspecialchars($targetUser) ?></h2>
 
+        <?php echo '<span class="profile-picture">'.getProfilePicture($targetUser) .'</span>'?>
+
         <!-- If the obtained $user matches the $username, show the edit profile picture -->
         <?php if ($targetUser == $user['username']) : ?>
-            <form action="upload_profile_picture.php" method="post" enctype="multipart/form-data">
+            <form action="includes/upload_profile_picture.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" id="username" name="username" value="<?= $user['username'] ?>" required>
                 <input type="file" id="picture" name="picture" accept=".jpg" required>
                 <input type="submit" value="Subir Imagen">
@@ -102,6 +104,6 @@ $followedUsers = $postsQuery->fetch(PDO::FETCH_ASSOC);
         <script src="./script/toggleLike.js"></script>
     </div>
 
+    <?php require 'includes/footer.php' ?>
 </body>
-
 </html>

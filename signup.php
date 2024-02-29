@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
     require 'includes/database.php';
 
     $message = '';
@@ -10,6 +13,8 @@
     ){
         if($_POST['password'] !== $_POST['confirm_password']){
             $message = 'Las contraseñas no coinciden.';
+        }else if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+            $message = 'Email inválido';
         }else{
             $sql = "INSERT INTO USERS (username, email, password) VALUES (:username, :email, :password)";
             $stmt = $conn->prepare($sql);
@@ -20,7 +25,11 @@
     
             try{
                 if($stmt->execute()){
-                    $message = 'Has sido registrado con éxito';
+                    session_start();
+                    $_SESSION["username"] = $_POST['username'];
+                    $_SESSION["password"] = $password;
+                    header('Location: /MEOWTTER');
+                    die();
                 }else{
                     echo implode(' ', $stmt->errorInfo());
                     $message = 'No ha sido posible el registro';
@@ -44,8 +53,10 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <meta name="HandheldFriendly" content="true">
         <title>MEOWTTER</title>
-        <link rel="stylesheet" href="assets/style/style.css">
+        <link rel="stylesheet" href="assets/style/styleLoginSignUp.css">
     </head>
     <body>
         <div class="container">

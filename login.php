@@ -5,7 +5,6 @@
 
     // If there is a session go to the main page
     if(isset($_SESSION['username']) && isset($_SESSION['password'])){
-        echo "<script>console.log('a' );</script>";
         header('Location: /MEOWTTER');
         die();
     }
@@ -35,8 +34,10 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <meta name="HandheldFriendly" content="true">
         <title>MEOWTTER</title>
-        <link rel="stylesheet" href="assets/style/style.css">
+        <link rel="stylesheet" href="assets/style/styleLoginSignUp.css">
     </head>
     <body>
     <?php if(!empty($message)): ?>

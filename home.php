@@ -7,6 +7,8 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+    <meta name="HandheldFriendly" content="true">
     <title>MEOWTTER</title>
     <link rel="stylesheet" href="assets/style/style.css">
     <link rel="stylesheet" href="assets/style/meowStyle.css">
@@ -31,6 +33,14 @@
                                 ORDER BY M.postTime DESC
                                 LIMIT 25';
                         $params = [':user' => $_SESSION['username']];
+
+                        echo'<!-- Post a new meow -->
+                        <form action="includes/upload_meow.php" method="get" onsubmit="return validateMeow();">
+                            <textarea id="content" name="content" placeholder="Maúlla al mundo lo que sientes..." required></textarea>
+                            <button type="submit">Publicar</button>
+                            <p id="errorMessage" style="color: red;"></p>
+                        </form>
+                        <script src="./script/validateMeow.js"></script>';
                         break;
                     case "explore":
                         $postsQuery = 'SELECT M.`id` AS id, M.`content` AS content, M.`user` AS user,
@@ -50,13 +60,7 @@
             ?>    
         
 
-            <!-- Post a new meow -->
-            <form action="./upload_meow.php" method="get" onsubmit="return validateMeow();">
-                <textarea id="content" name="content" placeholder="Maúlla al mundo lo que sientes..." required></textarea>
-                <button type="submit">Publicar</button>
-                <p id="errorMessage" style="color: red;"></p>
-            </form>
-            <script src="./script/validateMeow.js"></script>
+            
 
             <!-- List of meows of your follows -->
             <?php

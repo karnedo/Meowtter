@@ -80,7 +80,7 @@ CREATE TABLE `USERS` (
   `email` varchar(255) NOT NULL,
   `role` varchar(10) NOT NULL DEFAULT 'REGULAR' COMMENT 'ADMIN for administrator, MOD for moderator, REGULAR for normal users',
   `bannedUntil` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'null for not banned',
-  `profileImage` varchar(255) DEFAULT NULL COMMENT 'null for default image',
+  `profileImage` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
