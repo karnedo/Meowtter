@@ -54,15 +54,23 @@ function fetchMeows($conn, $query, $params = null) {
         $likeEmoji = $likedByUser ? '💖' : '💔';
 
         echo '<div class="post">
-            <p>' . getProfilePicture($meow['user']) . '</p>
-            <p><strong>
-                <a href="profile.php?user='.$meow['user'].'"><?= htmlspecialchars($meow[\'user\'])?>
-                </strong> ' . htmlspecialchars($meow['user']) . '</a>
-            </p>
-            <p>' . htmlspecialchars($meow['content']) . '</p>
-            <p><small id="likeCount_' . $meow['id'] . '">' . $meow['like_count'] . '</small>
-            <button id="likeButton_'.$meow['id'].'" onclick="toggleLike(' . $meow['id'] . ', \'' . $_SESSION['username'] . '\')">' . $likeEmoji . '</button>
-            <p><small>' . htmlspecialchars($meow['postHour']) . '</small></p>
+            <div class="meow-header">'
+                . getProfilePicture($meow['user']) . '
+                <p><strong>
+                    <a id="perfil" href="profile.php?user='.$meow['user'].'"><?= htmlspecialchars($meow[\'user\'])?>
+                    </strong> ' . htmlspecialchars($meow['user']) . '</a>
+                </p>
+            </div>
+            <div class="meow-content">
+                <p id="text">' . htmlspecialchars($meow['content']) . '</p>
+            </div>
+            <div class="meow-like">    
+                <p>
+                    <small id="likeCount_' . $meow['id'] . '">' . $meow['like_count'] . '</small>
+                    <button id="likeButton_'.$meow['id'].'" onclick="toggleLike(' . $meow['id'] . ', \'' . $_SESSION['username'] . '\')">' . $likeEmoji . '</button>
+                    <p id="hora"><small>' . htmlspecialchars($meow['postHour']) . '</small></p>
+                </p>
+            </div>
         </div>';
     }
 }

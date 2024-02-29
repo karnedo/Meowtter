@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <title>MEOWTTER</title>
     <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="assets/style/meowStyle.css">
 </head>
 <body>
     <div class="container">

@@ -5,6 +5,7 @@
 
     // If there is a session go to the main page
     if(isset($_SESSION['username']) && isset($_SESSION['password'])){
+        echo "<script>console.log('a' );</script>";
         header('Location: /MEOWTTER');
         die();
     }
@@ -20,7 +21,6 @@
 
         // Set the session and cookies, and redirect to the main page
         if ($result != null && count($result) > 0 && password_verify($_POST['password'], $result['password'])) {
-            //setcookie('password', $result['password'], time() + 604800, '/');
             $_SESSION["username"] = $result['username'];
             $_SESSION["password"] = $result["password"];
             header('Location: /MEOWTTER');
