@@ -1,39 +1,62 @@
-.post{
+.meows-list .post{
     display: flex;
     flex-direction: column;
-    background-color: burlywood;
+    background-color: rgb(255, 167, 52);
     border-radius: 10px;
-    width: 550px;
+    width: 80vh;
     margin-bottom: 20px;
-    padding: 15px;
     padding-bottom: 0%;
+    max-width: 80vh;
+}
+.meows-list .post .meow-header a{
+    color: white;
 }
 
-#perfil:link{
-    color: black;
+.meows-list .post .meow-header{
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    padding: 0;
+    padding: 1%;
+}
+.meows-list .post .meow-header p{
+    display: flex;
+}
+
+.meows-list #perfil:link{
+    color: white;
     text-decoration: none;
 }
 
-#perfil:visited{
-    color: black;
+.meows-list #perfil:visited{
+    color: white;
     text-decoration: none;
 }
 
-#perfil:hover{
-    color: black;
-    background-color: rgb(255, 205, 113);
+.meows-list #perfil{
+    display: flex;
+    transition: background-color 0.3s;
     padding: 15%;
     border-radius: 10px;
 }
 
-.meow-header {
+.meows-list #perfil:hover{
+    color: white;
+    background-color: rgb(250, 200, 112);
+    padding: 15%;
+    border-radius: 10px;
+}
+
+.meows-list .meow-header {
     display: flex;
     align-items: flex-start;
     font-size: larger;
     border-bottom: chocolate 1px solid;
+    padding: 3%;
 }
 
-img{
+.meows-list img{
+    display: flex;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -41,39 +64,54 @@ img{
     margin-left: 1%;
 }
 
-#meow-content{
+.meows-list .post .meow-content {
     display: flex;
-    padding: 5%;
-    text-align: justify;
-    border-color: black;
-    border: 1%;
-    line-break: auto;
+    flex-wrap: wrap; /* Permite que el contenido se envuelva en múltiples líneas */
 }
 
-#text{
+.meows-list .post .meow-content {
+    display: flex;
     text-align: justify;
+    height: auto; /* Ajustar la altura según el contenido */ /* Anchura máxima fija */
+}
+
+.meows-list #text {
+    display: flex;
     padding-left: 3%;
+    font-size: 4vh;
     padding-right: 3%;
-    line-break: auto;
-    overflow-wrap: break-word;
+    word-break: break-all; /* Dividir el texto en palabras si es necesario para ajustarse al contenedor */
 }
 
-#hora{
-    display: flex;
-    justify-content: flex-end;
-    margin-left: 80%;
-}
-
-.meow-like{
+.meows-list .meow-like{
     display: flex;
     align-content: flex-start;
-    padding-left: 2%;
+    padding-left: 3%;
     border: 1%;
     border-color: black;
     border-top: chocolate 1px solid;
 }
 
-small{
+.meows-list .meow-like button{
+    background-color: rgb(255, 188, 62);
+    height: 6vh;
+    border-radius: 100%;
+    border-color: rgb(201, 130, 0);
+    transition: background-color 0.3s, transform 0.3s;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+}
+
+.meows-list .meow-like button:hover{
+    background-color: rgb(255, 211, 128);
+}
+.meows-list #hora{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 60vh;
+}
+
+.meows-list small{
     margin-right: 5px;
 }
 

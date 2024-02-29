@@ -1,69 +1,204 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
 
-body {
-    margin: 0;
-    padding: 0;
-    text-align: center;
+body{
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
     background-color: rgb(255, 205, 113);
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: space-between;
+    min-height:100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+    position: relative; 
+    font-family: "Assistant", sans-serif;
+    color: white;
 }
-
-
-header {
-    border-bottom: 2px solid #f5deaf;
-    padding: 20px 0;
-    margin-bottom: 10px;
-    width: 100%;
-    text-align: center;
-}
-
-header a {
+body a {
+    color: white;
+    display: flex;
     text-decoration: none;
-    color: #00445f;
+    transition: color 0.3s, transform 0.3s;
+}
+
+body a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    transition: left 0.8s;
 }
 
 
-/*Login*/
+
+/*Contenido caja principal*/
 
 .container {
-    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh; 
+    margin-left: 10%;
+    margin-right: 10%;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    /* Establece la altura mínima del contenedor para ocupar toda la altura de la ventana del navegador */
+}
+
+.content {
+    flex: 1; /* Permite que el contenido ocupe todo el espacio disponible */
+}
+
+.posts-section{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: calc(750px + 10vw);
-    min-height: 550px;
-    min-width: 70vw;
+    width: 100%;
+    max-width: 100%;
     align-items: center;
-    background-image: url('../../img/gatoNaranja.png');
-    background-size: contain; /* Cambiado a 'contain' */
-    background-position: center;
-    background-repeat: no-repeat;
-    /* Aplicar sombra directamente a la imagen de fondo */
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7)); /* Se puede ajustar según el efecto deseado */
+    text-align: center;
+    background-color: rgb(255, 195, 98);
 }
 
-/*Formulario*/ 
-
-input[type="text"], input[type="password"] {
-    display: flex;
-    margin: 1vw;
-    padding: 0.5vw;
-    border-radius: 15px;
-    border: 1px solid rgb(156, 81, 0);
-    width: 200px; /* Ajusta el ancho según sea necesario */
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+.posts-section h2{
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 }
 
-.form-section {
+.meows-list{
     display: flex;
     flex-direction: column;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+.usuario{
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    text-align: center;
     justify-content: center;
-    align-items: center; /* Centra horizontalmente */
+}
+
+/*Usuario barra lateral*/
+.profile-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 157, 0);
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 5%;
+    
+}
+
+.profile-section img{
+    display: flex;
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+}
+
+.edit_user{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    align-items: center;
+    width: 70%;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(237, 154, 0);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+    border-radius: 5%;
+    padding: 2%;
+
+}
+.edit_user h2{
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+}
+
+
+.posts-section img{
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+}
+.user{
+    display: flex;
+    margin-top: 3vh;
+    font-size: 4vh;
+    justify-content: center;
+    transition: filter 0.3s, font-size 0.3s;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.user:hover{
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 8));
+    font-size: 5vh;
+}
+
+.user-sections{
+    align-items: center;
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    text-align: center;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+.user-image{
+    display: flex;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 input[type="submit"] {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 10px 20px;
+    margin: 2%;
+    width: 150px;
+    color: #fff;
+    background: rgb(247, 164, 62);
+    border: 0;
+    border-radius: 15px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(175, 84, 0);
+}
+
+input[type="file"] {
+    display: flex;
+    padding: 10px 20px;
+    color: #fff;
+    background: rgb(247, 164, 62);
+    border: 0;
+    margin: 2%;
+    border-radius: 15px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    transition: background-color 0.3s;
+}
+
+
+input[type="file"]:hover {
+    background-color: rgb(175, 84, 0);
+}
+
+button[type="submit"] {
+    display: flex;
+    text-align: center;
+    justify-content: center;
     padding: 10px 20px;
     width: 150px;
     color: #fff;
@@ -72,72 +207,84 @@ input[type="submit"] {
     border-radius: 15px;
     cursor: pointer;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    transition: background-color 0.3s;
 }
 
-input[type="submit"]:hover {
+button[type="submit"]:hover {
     background-color: rgb(175, 84, 0);
 }
 
-/*Arriba del formulario*/
 
-.top-section {
-
-    padding: 0;
+.nav{
     display: flex;
-    margin-top: 8vw;
     flex-direction: column;
+    align-items: center;
+    
+}
+.nav a{
+    display: flex;
+    padding: 15%;
+    transition: filter 0.3s, font-size 0.3s;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+}
+
+.nav a:hover {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 10));
+    font-size: 4vh;
+}
+
+textarea{
+    display: flex;
+    margin: 1vw;
+    padding: 0.5vw;
+    border-radius: 15px;
+    border: 1px solid rgb(156, 81, 0);
+    width: 80vh; /* Ajusta el ancho según sea necesario */
+    min-width: 80vh;
+    max-width: 80vh;
+    height: 5vh;
+    min-height: 5vh;
+    max-height: 20vh;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+/* En tu archivo de estilos CSS */
+
+.follows-section{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 30%;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    align-items: center;
+    background-color: rgb(255, 157, 0);
+    border-top-right-radius: 5%;
+}
+
+.follows-section h2{
+    display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
 }
 
-/*Logo*/
-
-.top-section .logo {
-    display: flex;
-    width: 60px; /* Tamaño deseado del logo */
-    min-width: 3vw; /* Tamaño mínimo de ancho */
-    min-height: 5vh;
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
-}
-
-/*Texto*/
-
-.top-section-text{
-    display: flex;
-    margin: 0;
-    flex-direction: column;
-    font-family: "Assistant", sans-serif;
-    color: white;
-    font-style: normal;
-    text-align: center;
-    font-size: 20px;
-    justify-content:center;
-    align-items: center;
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
-}
-
-.enlace{
-    font-size:calc(15px + 0.1vw);
-}
-
-.top-section-text a {
-    color: #ffffff; /* Cambia el color del texto del enlace */
-    text-decoration-color: white; /* Cambia el color del subrayado */
-}
-
-.top-section-text a:hover {
-    color: #ffddab; /* Cambia el color del texto del enlace al pasar el cursor */
-    text-decoration-color: #ffddab; /* Cambia el color del subrayado al pasar el cursor */
-    /* Puedes agregar otros estilos de hover según tus preferencias */
-}
-
 /*Respuesta del php*/
 
-p{
+.usuario p{
+    justify-content: center;
     font-family: "Assistant", sans-serif;
     color: white;
-    font-style: normal;
     text-align: center;
-    font-size:calc(15px + 0.1vw);
+    transition: filter 0.3s, font-size 0.3s;
 }
+
+.usuario p:hover{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 10));
+    font-size: 4vh;
+}
+
+
 
