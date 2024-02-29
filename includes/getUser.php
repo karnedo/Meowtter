@@ -6,7 +6,7 @@ require 'database.php';
 
 //Check if there's a logged user //NOTE: THIS SECTION IS IRRELEVANT WITH SESSIONS, BUT IT WILL BE USED TO CHECK IF THE USER IS BANNED
 if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
-    $record = $conn->prepare('SELECT username, email, password, role, coalesce(DATE(`bannedUntil`) < DATE(NOW()), 0) AS is_Banned
+    $record = $conn->prepare('SELECT username, email, password, role, coalesce(DATE(`bannedUntil`) > DATE(NOW()), 0) AS is_Banned
                                 FROM USERS WHERE username = :username AND `password` = :password');
     $record->bindParam(':username', $_SESSION['username']);
     $record->bindParam(':password', $_SESSION['password']);

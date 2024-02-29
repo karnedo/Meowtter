@@ -20,7 +20,6 @@
 
         // Set the session and cookies, and redirect to the main page
         if ($result != null && count($result) > 0 && password_verify($_POST['password'], $result['password'])) {
-            //setcookie('password', $result['password'], time() + 604800, '/');
             $_SESSION["username"] = $result['username'];
             $_SESSION["password"] = $result["password"];
             header('Location: /MEOWTTER');
@@ -35,8 +34,10 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <meta name="HandheldFriendly" content="true">
         <title>MEOWTTER</title>
-        <link rel="stylesheet" href="assets/style/style.css">
+        <link rel="stylesheet" href="assets/style/styleLoginSignUp.css">
     </head>
     <body>
     <?php if(!empty($message)): ?>

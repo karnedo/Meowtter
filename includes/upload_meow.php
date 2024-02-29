@@ -1,6 +1,6 @@
 <?php
-require 'includes/database.php';
-include 'includes/getUser.php';
+require 'database.php';
+include 'getUser.php';
 
 if(isset($_GET['content'])){
     $username = $user['username'];

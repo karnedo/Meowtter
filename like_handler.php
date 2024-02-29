@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newLikeCountStmt->execute();
     $newLikeCount = $newLikeCountStmt->fetchColumn();
 
-    // Devuelve el nuevo conteo de likes como parte de la respuesta
+    //Return like count as a response
     echo $newLikeCount;
     
 } else {

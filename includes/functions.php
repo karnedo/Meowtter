@@ -18,10 +18,16 @@ function uploadProfilePicture($username, $picture){
     $exitCode = 1; 
     $extension = pathinfo($picture['name'], PATHINFO_EXTENSION);
 
+    $targetDirectory = '../img/users/';
+
+    if (!is_dir($targetDirectory)) {
+        mkdir($targetDirectory, 0755, true);
+    }
+
     if($extension != 'jpg'){
         $exitCode = 2;
-    }else{
-        $path = 'img/users/'.$username.'.'.$extension;
+    } else {
+        $path = $targetDirectory . $username . '.' . $extension;
         if(move_uploaded_file($picture['tmp_name'], $path)){
             $exitCode = 0;
         }
@@ -49,22 +55,32 @@ function fetchMeows($conn, $query, $params = null) {
         $meows->execute();
     }
 
+    echo '<div class="meows-list">';
     while ($meow = $meows->fetch(PDO::FETCH_ASSOC)) {
         $likedByUser = hasUserLikedPost($conn, $_SESSION['username'], $meow['id']);
         $likeEmoji = $likedByUser ? '💖' : '💔';
 
         echo '<div class="post">
-            <p>' . getProfilePicture($meow['user']) . '</p>
-            <p><strong>
-                <a href="profile.php?user='.$meow['user'].'"><?= htmlspecialchars($meow[\'user\'])?>
-                </strong> ' . htmlspecialchars($meow['user']) . '</a>
-            </p>
-            <p>' . htmlspecialchars($meow['content']) . '</p>
-            <p><small id="likeCount_' . $meow['id'] . '">' . $meow['like_count'] . '</small>
-            <button id="likeButton_'.$meow['id'].'" onclick="toggleLike(' . $meow['id'] . ', \'' . $_SESSION['username'] . '\')">' . $likeEmoji . '</button>
-            <p><small>' . htmlspecialchars($meow['postHour']) . '</small></p>
+            <div class="meow-header">'
+                . getProfilePicture($meow['user']) . '
+                <p><strong>
+                    <a id="perfil" href="profile.php?user='.$meow['user'].'"><?= htmlspecialchars($meow[\'user\'])?>
+                    </strong> ' . htmlspecialchars($meow['user']) . '</a>
+                </p>
+            </div>
+            <div class="meow-content">
+                <p id="text">' . htmlspecialchars($meow['content']) . '</p>
+            </div>
+            <div class="meow-like">    
+                <p>
+                    <small id="likeCount_' . $meow['id'] . '">' . $meow['like_count'] . '</small>
+                    <button id="likeButton_'.$meow['id'].'" onclick="toggleLike(' . $meow['id'] . ', \'' . $_SESSION['username'] . '\')">' . $likeEmoji . '</button>
+                    <p id="hora"><small>' . htmlspecialchars($meow['postHour']) . '</small></p>
+                </p>
+            </div>
         </div>';
     }
+    echo '</div>';
 }
 
 function isFollowing($conn, $followingUser, $followedUser){
