@@ -28,7 +28,7 @@ function usersTable($conn){
             <td>' . ($bannedUntil < new DateTime() ? ($userRow['role'] != "ADMIN" ? 'No' : 'No aplicable') : $bannedUntil->format('Y-m-d')) . '</td>
             <td>'.
                 ($userRow['role'] != "ADMIN" ?
-                '<form action=\"administrationPanel.php\">
+                '<form action="administrationPanel.php">
                     <input type="hidden" id="page" name="page" value="modify">
                     <input type="hidden" id="username" name="username" value="' . $userRow['username'] . '">
                     <button type="submit">Modificar</button>
