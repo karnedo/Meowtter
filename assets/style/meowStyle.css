@@ -65,13 +65,13 @@
 
 .meows-list .post .meow-content {
     display: flex;
-    flex-wrap: wrap; /* Permite que el contenido se envuelva en múltiples líneas */
+    flex-wrap: wrap; 
 }
 
 .meows-list .post .meow-content {
     display: flex;
     text-align: justify;
-    height: auto; /* Ajustar la altura según el contenido */ /* Anchura máxima fija */
+    height: auto; 
 }
 
 .meows-list #text {
@@ -79,7 +79,7 @@
     padding-left: 10px;
     font-size: 25px;
     padding-right: 10px;
-    word-break: break-all; /* Dividir el texto en palabras si es necesario para ajustarse al contenedor */
+    word-break: break-word; 
 }
 
 .meows-list .meow-like{
