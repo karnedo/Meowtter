@@ -3,10 +3,10 @@
     flex-direction: column;
     background-color: rgb(255, 167, 52);
     border-radius: 10px;
-    width: 80vh;
+    width: 500x;
     margin-bottom: 20px;
-    padding-bottom: 0%;
-    max-width: 80vh;
+    padding-bottom: 0px;
+    max-width: 500px;
 }
 .meows-list .post .meow-header a{
     color: white;
@@ -17,7 +17,7 @@
     align-items: center;
     margin-top: 0;
     padding: 0;
-    padding: 1%;
+    padding: 5px;
 }
 .meows-list .post .meow-header p{
     display: flex;
@@ -36,14 +36,13 @@
 .meows-list #perfil{
     display: flex;
     transition: background-color 0.3s;
-    padding: 15%;
     border-radius: 10px;
+    padding: 5px;
 }
 
 .meows-list #perfil:hover{
     color: white;
     background-color: rgb(250, 200, 112);
-    padding: 15%;
     border-radius: 10px;
 }
 
@@ -52,7 +51,7 @@
     align-items: flex-start;
     font-size: larger;
     border-bottom: chocolate 1px solid;
-    padding: 3%;
+    padding: 3px;
 }
 
 .meows-list img{
@@ -60,8 +59,8 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin-right: 3%;
-    margin-left: 1%;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .meows-list .post .meow-content {
@@ -77,24 +76,25 @@
 
 .meows-list #text {
     display: flex;
-    padding-left: 3%;
-    font-size: 4vh;
-    padding-right: 3%;
+    padding-left: 10px;
+    font-size: 25px;
+    padding-right: 10px;
     word-break: break-all; /* Dividir el texto en palabras si es necesario para ajustarse al contenedor */
 }
 
 .meows-list .meow-like{
     display: flex;
     align-content: flex-start;
-    padding-left: 3%;
-    border: 1%;
+    padding-left: 10px;
+    border: 1px;
     border-color: black;
     border-top: chocolate 1px solid;
 }
 
 .meows-list .meow-like button{
     background-color: rgb(255, 188, 62);
-    height: 6vh;
+    height: 35px;
+    width: 35px;
     border-radius: 100%;
     border-color: rgb(201, 130, 0);
     transition: background-color 0.3s, transform 0.3s;
@@ -108,7 +108,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-left: 60vh;
+    margin-left: 400px;
 }
 
 .meows-list small{

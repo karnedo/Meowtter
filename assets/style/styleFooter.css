@@ -5,12 +5,12 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.4vh; /* Cambia el tamaño de la fuente según sea necesario */
-    padding: 10px;
-    margin-left: 2%;
-    margin-right: 2%;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    font-size: 2vh; /* Cambia el tamaño de la fuente según sea necesario */
+    padding: 1vh;
+    margin-left: 1%;
+    margin-right: 1%;
+    border-top-left-radius: 1vh;
+    border-top-right-radius: 1vh;
     border-right: 1vh solid rgb(195, 97, 5);
     border-top: 1vh solid rgb(240, 118, 4);
     background-color: rgb(255, 147, 46);
@@ -25,8 +25,8 @@ footer .Footer {
 
 footer .Footer p {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
-    margin-left: 40px;
-    margin-right: 40px; /* Elimina el margen predeterminado del párrafo */
+    margin-left: 5vh;
+    margin-right: 5vh; /* Elimina el margen predeterminado del párrafo */
 }
 
 footer .Footer a { /* Espacio entre elementos */
@@ -36,7 +36,7 @@ footer .Footer a { /* Espacio entre elementos */
 }
 
 footer a img {
-    width: 60px; /* Tamaño deseado del logo */
+    width: 2vh; /* Tamaño deseado del logo */
     min-width: 3vw; /* Tamaño mínimo de ancho */
     min-height: 5vh;
     max-width:5vw;

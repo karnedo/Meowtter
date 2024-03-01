@@ -56,11 +56,12 @@ body a::after {
     max-width: 100%;
     align-items: center;
     text-align: center;
-    background-color: rgb(255, 195, 98);
+    background-color: rgb(255, 182, 65);
 }
 
 .posts-section h2{
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    font-size: 25px;
 }
 
 .meows-list{
@@ -90,8 +91,8 @@ body a::after {
 
 .profile-section img{
     display: flex;
-    width: 15vh;
-    height: 15vh;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
 }
@@ -101,30 +102,31 @@ body a::after {
     flex-direction: column;
     margin: 0;
     align-items: center;
-    width: 70%;
+    width: 500px;
     justify-content: center;
     text-align: center;
     background-color: rgb(237, 154, 0);
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
     border-radius: 5%;
-    padding: 2%;
+    padding: 2px;
 
 }
 .edit_user h2{
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+    font-size: 25px;
 }
 
 
 .posts-section img{
-    width: 30vh;
-    height: 30vh;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
 }
 .user{
     display: flex;
-    margin-top: 3vh;
-    font-size: 4vh;
+    margin-top: 30px;
+    font-size: 30px;
     justify-content: center;
     transition: filter 0.3s, font-size 0.3s;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
@@ -134,13 +136,14 @@ body a::after {
 
 .user:hover{
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 8));
-    font-size: 5vh;
+    padding: 10px;
+    font-size: 40px;
 }
 
 .user-sections{
     align-items: center;
     display: flex;
-    width: 30%;
+    width: 300px;
     flex-direction: column;
     text-align: center;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
@@ -162,7 +165,7 @@ input[type="submit"] {
     align-items: center;
     display: flex;
     padding: 10px 20px;
-    margin: 2%;
+    margin: 15px;
     width: 150px;
     color: #fff;
     background: rgb(247, 164, 62);
@@ -183,7 +186,7 @@ input[type="file"] {
     color: #fff;
     background: rgb(247, 164, 62);
     border: 0;
-    margin: 2%;
+    margin: 15px;
     border-radius: 15px;
     cursor: pointer;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
@@ -223,28 +226,29 @@ button[type="submit"]:hover {
 }
 .nav a{
     display: flex;
-    padding: 15%;
+    padding: 15px;
+    font-size: 20px;
     transition: filter 0.3s, font-size 0.3s;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
 }
 
 .nav a:hover {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 10));
-    font-size: 4vh;
+    font-size: 30px;
 }
 
 textarea{
     display: flex;
-    margin: 1vw;
-    padding: 0.5vw;
+    margin: 10px;
+    padding: 10px;
     border-radius: 15px;
     border: 1px solid rgb(156, 81, 0);
-    width: 80vh; /* Ajusta el ancho según sea necesario */
-    min-width: 80vh;
-    max-width: 80vh;
-    height: 5vh;
-    min-height: 5vh;
-    max-height: 20vh;
+    width: 500px; /* Ajusta el ancho según sea necesario */
+    min-width: 500px;
+    max-width: 500px;
+    height: 30px;
+    min-height: 30px;
+    max-height: 80px;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
 }
 
@@ -254,7 +258,7 @@ textarea{
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 30%;
+    width: 300px;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
     align-items: center;
     background-color: rgb(255, 157, 0);
@@ -275,6 +279,7 @@ textarea{
     font-family: "Assistant", sans-serif;
     color: white;
     text-align: center;
+    font-size: 15px;
     transition: filter 0.3s, font-size 0.3s;
 }
 
@@ -283,7 +288,7 @@ textarea{
     justify-content: center;
     align-items: center;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 10));
-    font-size: 4vh;
+    font-size: 20px;
 }
 
 
