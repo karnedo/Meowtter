@@ -1,0 +1,295 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+
+body{
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 205, 113);
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: space-between;
+    min-height:100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+    position: relative; 
+    font-family: "Assistant", sans-serif;
+    color: white;
+}
+body a {
+    color: white;
+    display: flex;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+body a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    transition: left 0.8s;
+}
+
+
+
+/*Contenido caja principal*/
+
+.container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh; 
+    margin-left: 10%;
+    margin-right: 10%;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    /* Establece la altura mínima del contenedor para ocupar toda la altura de la ventana del navegador */
+}
+
+.content {
+    flex: 1; /* Permite que el contenido ocupe todo el espacio disponible */
+}
+
+.posts-section{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(255, 182, 65);
+}
+
+.posts-section h2{
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    font-size: 25px;
+}
+
+.meows-list{
+    display: flex;
+    flex-direction: column;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+.usuario{
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    text-align: center;
+    justify-content: center;
+}
+
+/*Usuario barra lateral*/
+.profile-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 157, 0);
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 5%;
+    
+}
+
+.profile-section img{
+    display: flex;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+}
+
+.edit_user{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    align-items: center;
+    width: 500px;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(237, 154, 0);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+    border-radius: 5%;
+    padding: 2px;
+
+}
+.edit_user h2{
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+    font-size: 25px;
+}
+
+
+.posts-section img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+}
+.user{
+    display: flex;
+    margin-top: 30px;
+    font-size: 30px;
+    justify-content: center;
+    transition: filter 0.3s, font-size 0.3s;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.user:hover{
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 8));
+    padding: 10px;
+    font-size: 40px;
+}
+
+.user-sections{
+    align-items: center;
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    text-align: center;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+.user-image{
+    display: flex;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="submit"] {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 10px 20px;
+    margin: 15px;
+    width: 150px;
+    color: #fff;
+    background: rgb(247, 164, 62);
+    border: 0;
+    border-radius: 15px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(175, 84, 0);
+}
+
+input[type="file"] {
+    display: flex;
+    padding: 10px 20px;
+    color: #fff;
+    background: rgb(247, 164, 62);
+    border: 0;
+    margin: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    transition: background-color 0.3s;
+}
+
+
+input[type="file"]:hover {
+    background-color: rgb(175, 84, 0);
+}
+
+button[type="submit"] {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 10px 20px;
+    width: 150px;
+    color: #fff;
+    background: rgb(247, 164, 62);
+    border: 0;
+    border-radius: 15px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: rgb(175, 84, 0);
+}
+
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.nav a{
+    display: flex;
+    padding: 15px;
+    font-size: 20px;
+    transition: filter 0.3s, font-size 0.3s;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.6));
+}
+
+.nav a:hover {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 10));
+    font-size: 30px;
+}
+
+textarea{
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid rgb(156, 81, 0);
+    width: 500px; /* Ajusta el ancho según sea necesario */
+    min-width: 500px;
+    max-width: 500px;
+    height: 30px;
+    min-height: 30px;
+    max-height: 80px;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+/* En tu archivo de estilos CSS */
+
+.follows-section{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 300px;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    align-items: center;
+    background-color: rgb(255, 157, 0);
+    border-top-right-radius: 5%;
+}
+
+.follows-section h2{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Respuesta del php*/
+
+.usuario p{
+    justify-content: center;
+    font-family: "Assistant", sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    transition: filter 0.3s, font-size 0.3s;
+}
+
+.usuario p:hover{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 10));
+    font-size: 20px;
+}
+
+
+

@@ -1,0 +1,117 @@
+.meows-list .post{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 167, 52);
+    border-radius: 10px;
+    width: 500x;
+    margin-bottom: 20px;
+    padding-bottom: 0px;
+    max-width: 500px;
+}
+.meows-list .post .meow-header a{
+    color: white;
+}
+
+.meows-list .post .meow-header{
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    padding: 0;
+    padding: 5px;
+}
+.meows-list .post .meow-header p{
+    display: flex;
+}
+
+.meows-list #perfil:link{
+    color: white;
+    text-decoration: none;
+}
+
+.meows-list #perfil:visited{
+    color: white;
+    text-decoration: none;
+}
+
+.meows-list #perfil{
+    display: flex;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.meows-list #perfil:hover{
+    color: white;
+    background-color: rgb(250, 200, 112);
+    border-radius: 10px;
+}
+
+.meows-list .meow-header {
+    display: flex;
+    align-items: flex-start;
+    font-size: larger;
+    border-bottom: chocolate 1px solid;
+    padding: 3px;
+}
+
+.meows-list img{
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.meows-list .post .meow-content {
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.meows-list .post .meow-content {
+    display: flex;
+    text-align: justify;
+    height: auto; 
+}
+
+.meows-list #text {
+    display: flex;
+    padding-left: 10px;
+    font-size: 25px;
+    padding-right: 10px;
+    word-break: break-word; 
+}
+
+.meows-list .meow-like{
+    display: flex;
+    align-content: flex-start;
+    padding-left: 10px;
+    border: 1px;
+    border-color: black;
+    border-top: chocolate 1px solid;
+}
+
+.meows-list .meow-like button{
+    background-color: rgb(255, 188, 62);
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    border-color: rgb(201, 130, 0);
+    transition: background-color 0.3s, transform 0.3s;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+}
+
+.meows-list .meow-like button:hover{
+    background-color: rgb(255, 211, 128);
+}
+.meows-list #hora{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 400px;
+}
+
+.meows-list small{
+    margin-right: 5px;
+}
+
