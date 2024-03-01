@@ -41,7 +41,7 @@ $followedUsers = $postsQuery->fetch(PDO::FETCH_ASSOC);
 
                 <!-- If the obtained $user matches the $username, show the edit profile picture -->
                 <?php if ($targetUser == $user['username']) : ?>
-                    <form action="upload_profile_picture.php" method="post" enctype="multipart/form-data">
+                    <form action="includes/upload_profile_picture.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="username" name="username" value="<?= $user['username'] ?>" required>
                         <input type="file" id="picture" name="picture" accept=".jpg" required>
                         <input type="submit" value="Subir Imagen">
